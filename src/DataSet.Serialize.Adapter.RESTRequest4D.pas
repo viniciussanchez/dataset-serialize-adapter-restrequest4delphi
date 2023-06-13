@@ -2,7 +2,7 @@ unit DataSet.Serialize.Adapter.RESTRequest4D;
 
 interface
 
-uses RESTRequest4D.Request.Adapter.Contract{$IF DEFINED(FPC)}, DB{$ENDIF}, DataSet.Serialize;
+uses RESTRequest4D.Request.Adapter.Contract, DataSet.Serialize{$IF DEFINED(FPC)}, DB{$ELSE}, Data.DB{$ENDIF};
 
 type
   TDataSetSerializeAdapter = class(TInterfacedObject, IRequestAdapter)
