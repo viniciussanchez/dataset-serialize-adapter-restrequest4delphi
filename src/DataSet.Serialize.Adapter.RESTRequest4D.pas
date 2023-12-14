@@ -7,14 +7,15 @@ uses RESTRequest4D.Request.Adapter.Contract, DataSet.Serialize{$IF DEFINED(FPC)}
 type
   TDataSetSerializeAdapter = class(TInterfacedObject, IRequestAdapter)
   private
+    FRootElement: string;
     FDataSet: TDataSet;
     procedure Execute(const AContent: string);
     {$IFNDEF FPC}
     procedure ActiveCachedUpdates(const ADataSet: TDataSet; const AActive: Boolean);
     {$ENDIF}
-    constructor Create(const ADataSet: TDataSet); reintroduce;
+    constructor Create(const ADataSet: TDataSet; const ARootElement: string = ''); reintroduce;
   public
-    class function New(const ADataSet: TDataSet): IRequestAdapter;
+    class function New(const ADataSet: TDataSet; const ARootElement: string = ''): IRequestAdapter;
   end;
 
 implementation
@@ -44,9 +45,10 @@ begin
 end;
 {$ENDIF}
 
-constructor TDataSetSerializeAdapter.Create(const ADataSet: TDataSet);
+constructor TDataSetSerializeAdapter.Create(const ADataSet: TDataSet; const ARootElement: string = '');
 begin
   FDataSet := ADataSet;
+  FRootElement := ARootElement;
 end;
 
 procedure TDataSetSerializeAdapter.Execute(const AContent: string);
@@ -54,15 +56,15 @@ begin
   {$IFNDEF FPC}
   ActiveCachedUpdates(FDataSet, False);
   {$ENDIF}
-  FDataSet.LoadFromJSON(aContent);
+  FDataSet.LoadFromJSON(AContent, FRootElement);
   {$IFNDEF FPC}
   ActiveCachedUpdates(FDataSet, True);
   {$ENDIF}
 end;
 
-class function TDataSetSerializeAdapter.New(const ADataSet: TDataSet): IRequestAdapter;
+class function TDataSetSerializeAdapter.New(const ADataSet: TDataSet; const ARootElement: string = ''): IRequestAdapter;
 begin
-  Result := TDataSetSerializeAdapter.Create(ADataSet);
+  Result := TDataSetSerializeAdapter.Create(ADataSet, ARootElement);
 end;
 
 end.
