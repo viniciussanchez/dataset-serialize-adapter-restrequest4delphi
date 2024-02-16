@@ -26,11 +26,11 @@ This adapter is compatible with projects developed in:
 
 ## ⚡️ Quickstart
 ```delphi
-uses RESTRequest4Delphi, DataSet.Serialize.Adapter.RESTRequest4D;
+uses RESTRequest4D, DataSet.Serialize.Adapter.RESTRequest4D;
   
 begin
   TRequest.New.BaseURL('http://localhost:8888/users')
-    .Adapters(TDataSetSerializeAdapter.New(mtUsers))
+    .Adapters(TDataSetSerializeAdapter.New(mtUsers, 'my-optional-root-element'))
     .Accept('application/json')
     .Get;
 end;
