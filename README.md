@@ -1,6 +1,5 @@
 # DataSet-Serialize Adapter for RESTRequest4Delphi
-<b>This's <a href="https://github.com/viniciussanchez/dataset-serialize">DataSet-Serialize</a> adapter for <a href="https://github.com/viniciussanchez/RESTRequest4Delphi">RESTRequest4Delphi</a>. Allows loading a DataSet with the content of a request.
-<br>We created a channel on Telegram for questions and support:<br><br>
+This's <a href="https://github.com/viniciussanchez/dataset-serialize">DataSet-Serialize</a> adapter for <a href="https://github.com/viniciussanchez/RESTRequest4Delphi">RESTRequest4Delphi</a>. Allows loading a DataSet with the content of a request.<br>Buy our official training by <a href="https://go.hotmart.com/U88695509H"><b>clicking here</b></a>! We created a channel on Telegram for questions and support:<br><br>
 <a href="https://t.me/hashload">
   <img src="https://img.shields.io/badge/telegram-join%20channel-7289DA?style=flat-square">
 </a>
